@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<html lang="en">
+<meta charset="utf-8" />
+<meta
+  name="description"
+  content="Site that shows cafes rates by user in few categories." />
+<title>{% block title %}{% endblock %}</title>
+{% block style %}
+
+{{ bootstrap.load_css()}}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+</head>
+<body>
+{% block content %}
+ 
+ 
+<p>This is a Flask application.</p>
+
+ 
+{% endblock %}
+</body>
+</html>
