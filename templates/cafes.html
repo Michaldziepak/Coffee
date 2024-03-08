@@ -2,7 +2,34 @@
 {% extends 'base.html' %}
 {% block title %}Cafes{% endblock %}
 {% block content %}
- 
+<h1 style="margin: 0 auto;text-align: center;color:#fcba03;padding-bottom: 15px;border-top-width: 10px;padding-top: 10px;"> Cafes </h1>
+<table class="table table-striped" style="width: 50%;margin: 0 auto;padding-top:10px ;text-align:center">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Google Maps link</th>
+            <th>Wifi speed</th>
+            <th>Cakes quality</th>
+            <th>Cofee quality</th>
+            <th>Manage row</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+       {% for cafe in cafes %}
+        <tr>
+            <td>{{ cafe.name }}</td>
+            <td><a href ={{ cafe.link }}>link</a></td>
+            <td>{{ cafe.wifi_speed }}</td>
+            <td>{{ cafe.cakes }}</td>
+            <td>{{ cafe.coffee_quality }}</td>
+            <td><a style="color:#fcba03" href={{url_for("edit",cafeid=cafe.id)}}>edit </a><a style="color:#fcba03" href={{url_for("delete",cafeid=cafe.id)}}>delete </a> </td>
 
- 
+            
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a style="color:#fcba03;margin-left: 887px;" href={{url_for("add_new_cafe")}}>Add new cafe </a>
 {% endblock %}

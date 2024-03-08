@@ -1,0 +1,35 @@
+   
+{% extends 'base.html' %}
+{% block title %}
+{% if option=="edit" %}
+    Edit cafe
+{% elif option=="add" %}
+    Add new cafe
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if option=="edit" %}
+    <h1 style="margin: 0 auto;text-align: center;color:#fcba03;padding-bottom: 15px;border-top-width: 10px;padding-top: 10px;"> Edit cafe </h1>
+{% elif option=="add" %}
+<h1 style="margin: 0 auto;text-align: center;color:#fcba03;padding-bottom: 15px;border-top-width: 10px;padding-top: 10px;"> Add new cafe </h1>
+{% endif %}
+
+
+<div class="form-container">
+    <form method="POST"  style="color: #fcba03;width:50%; position: absolute;top: 50%;left: 50%; transform: translate(-50%, -50%);">
+        {{ form.csrf_token }}
+        {% for field in form %}
+            {% if field.name != 'csrf_token' %}  {# Exclude CSRF token field from rendering label #}
+                <div>
+                    {{ field.label }}: {{ field(class="form-control") }}
+                    {% for error in field.errors %}
+                        <span style="color: red;">{{ error }}</span><br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>        
+
+{% endblock %}
